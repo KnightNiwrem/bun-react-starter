@@ -12,7 +12,7 @@
  */
 export function randomInt(min: number, max: number): number {
   if (!Number.isSafeInteger(min) || !Number.isSafeInteger(max)) {
-    throw new TypeError('randomInt: min and max must be safe integers');
+    throw new TypeError("randomInt: min and max must be safe integers");
   }
   const [low, high] = min > max ? [max, min] : [min, max];
   const range = high - low + 1;

@@ -1,7 +1,7 @@
-import { test, expect } from 'bun:test';
-import { randomInt } from './math';
+import { expect, test } from "bun:test";
+import { randomInt } from "./math";
 
-test('randomInt returns deterministic values when Math.random is stubbed and handles swapped bounds and validation', () => {
+test("randomInt returns deterministic values when Math.random is stubbed and handles swapped bounds and validation", () => {
   const originalRandom = Math.random;
   try {
     // Middle of the range -> should pick the middle integer
