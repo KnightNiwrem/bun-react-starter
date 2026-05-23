@@ -2,7 +2,7 @@
 
 ## Tech Stack
 
-- **Runtime/Bundler**: Bun (v1.3+)
+- **Runtime/Bundler**: Bun (pinned to v1.3.14)
 - **Frontend**: React 19, TypeScript 5.9+
 - **Styling**: Tailwind CSS 4, tw-animate-css
 - **UI Components**: shadcn/ui (Radix UI primitives)
@@ -13,14 +13,17 @@
 
 ```
 ├── src/
-│   ├── index.ts          # Bun server entry point with API routes
+│   ├── index.ts          # Thin Bun local server entry point
+│   ├── server.ts         # Testable Bun serve options for the local app shell
 │   ├── index.html        # HTML entry point
 │   ├── index.css         # Global styles and Tailwind imports
 │   ├── frontend.tsx      # React app entry point
 │   ├── App.tsx           # Main React component
 │   ├── components/ui/    # shadcn/ui components (button, card, input, etc.)
 │   ├── lib/utils.ts      # Utility functions (cn helper for classnames)
-│   └── utils/            # Additional utilities with tests
+│   └── *.test.ts(x)      # Tests colocated with the code they cover
+├── scripts/
+│   └── preview-dist.ts   # Local static preview server for dist/
 ├── styles/globals.css    # Additional global styles
 ├── build.ts              # Custom build script
 ├── biome.json            # Biome linting/formatting config
@@ -30,8 +33,8 @@
 ## Dev Environment Setup
 
 1. Always run `bun install` first to ensure dependencies are installed
-2. Use `bun dev` to start the development server with hot reloading
-3. The server runs at `http://localhost:3000` by default
+2. Use `bun dev` to start the local source server with hot reloading
+3. The server runs at `http://localhost:3000` by default. Use `PORT=4000 bun dev` to override it.
 
 ## Available Commands
 
@@ -39,19 +42,21 @@
 |---------|-------------|
 | `bun install` | Install dependencies |
 | `bun dev` | Start dev server with hot reloading |
-| `bun start` | Run production server |
-| `bun run build` | Build for production |
+| `bun run serve:source` | Serve the source app locally without hot reloading |
+| `bun run build` | Build static production assets into `dist/` |
+| `bun run preview` | Build and serve `dist/` locally as static files |
 | `bun check` | Run Biome linting, formatting, and import checks |
 | `bun check:fix` | Auto-fix linting, formatting, and import issues |
 | `bun typecheck` | Run TypeScript type checking |
 | `bun test` | Run tests with Bun's test runner |
+| `bun run validate` | Run check, typecheck, test, and build |
 
 ## Validation Requirements
 
 Before completing any task, ensure all checks pass:
 
 ```bash
-bun check && bun typecheck && bun test
+bun check && bun typecheck && bun test && bun run build
 ```
 
 Run these commands in sequence. If any fail, fix the issues before proceeding.
@@ -82,7 +87,7 @@ Run these commands in sequence. If any fail, fix the issues before proceeding.
 
 - Test files use `.test.ts` or `.test.tsx` suffix
 - Tests use Bun's built-in test runner (`import { expect, test } from "bun:test"`)
-- Place tests alongside source files in `src/utils/`
+- Place tests alongside the source files they cover
 - Add or update tests for any code changes
 
 Example test pattern:
@@ -95,12 +100,13 @@ test("description of what is being tested", () => {
 });
 ```
 
-## API Development
+## Static App Development
 
-- API routes are defined in the `routes` object
-- Use `Response.json()` for JSON responses
-- Route parameters use `:param` syntax (e.g., `/api/hello/:name`)
-- The catch-all `/*` route serves the React SPA
+- This template is for client-only React apps built to static assets
+- Do not add backend API routes unless the generated project explicitly needs a backend
+- Keep `src/index.ts` as a thin wrapper that starts `Bun.serve`
+- Keep testable local-serving configuration in `src/server.ts`
+- The production artifact is `dist/`; deploy it to a static host with an SPA fallback to `index.html`
 
 ## Adding shadcn/ui Components
 
@@ -112,6 +118,6 @@ Components are manually added to `src/components/ui/`. When adding new shadcn/ui
 ## Common Gotchas
 
 - Always import React types properly for TSX files
-- The `bun-plugin-tailwind` handles Tailwind CSS processing during build
+- The `bun-plugin-tailwind` handles Tailwind CSS processing during source serving and build
 - CSS files support `@tailwind` directives
-- Use `NODE_ENV=production` for production builds
+- Use `bun run build` for production builds
