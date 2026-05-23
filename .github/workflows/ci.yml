@@ -23,13 +23,13 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Check
-        run: bun check
+        run: bun run check
 
       - name: Typecheck
-        run: bun typecheck
+        run: bun run typecheck
 
       - name: Test
-        run: bun test
+        run: bun run test
 
       - name: Build
         run: bun run build

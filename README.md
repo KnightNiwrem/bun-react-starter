@@ -21,28 +21,28 @@ be deployed on a static host.
 | Command | Description |
 | --- | --- |
 | `bun install` | Install dependencies |
-| `bun dev` | Serve `src/index.html` through Bun with hot reloading |
+| `bun run dev` | Serve `src/index.html` through Bun with hot reloading |
 | `bun run serve:source` | Serve the source app locally without hot reloading |
 | `bun run build` | Build static production assets into `dist/` |
 | `bun run preview` | Build and serve `dist/` locally as static files |
-| `bun check` | Run Biome linting, formatting, and import checks |
-| `bun check:fix` | Auto-fix Biome issues |
-| `bun typecheck` | Run TypeScript type checking |
-| `bun test` | Run Bun tests |
+| `bun run check` | Run Biome linting, formatting, and import checks |
+| `bun run check:fix` | Auto-fix Biome issues |
+| `bun run typecheck` | Run TypeScript type checking |
+| `bun run test` | Run Bun tests |
 | `bun run validate` | Run check, typecheck, test, and build |
 
 ## Development
 
 ```bash
 bun install
-bun dev
+bun run dev
 ```
 
 The local Bun server defaults to `http://localhost:3000`. Use `PORT` to run on a
 different port:
 
 ```bash
-PORT=4000 bun dev
+PORT=4000 bun run dev
 ```
 
 ## Static Builds

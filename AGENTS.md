@@ -33,22 +33,22 @@
 ## Dev Environment Setup
 
 1. Always run `bun install` first to ensure dependencies are installed
-2. Use `bun dev` to start the local source server with hot reloading
-3. The server runs at `http://localhost:3000` by default. Use `PORT=4000 bun dev` to override it.
+2. Use `bun run dev` to start the local source server with hot reloading
+3. The server runs at `http://localhost:3000` by default. Use `PORT=4000 bun run dev` to override it.
 
 ## Available Commands
 
 | Command | Description |
 |---------|-------------|
 | `bun install` | Install dependencies |
-| `bun dev` | Start dev server with hot reloading |
+| `bun run dev` | Start dev server with hot reloading |
 | `bun run serve:source` | Serve the source app locally without hot reloading |
 | `bun run build` | Build static production assets into `dist/` |
 | `bun run preview` | Build and serve `dist/` locally as static files |
-| `bun check` | Run Biome linting, formatting, and import checks |
-| `bun check:fix` | Auto-fix linting, formatting, and import issues |
-| `bun typecheck` | Run TypeScript type checking |
-| `bun test` | Run tests with Bun's test runner |
+| `bun run check` | Run Biome linting, formatting, and import checks |
+| `bun run check:fix` | Auto-fix linting, formatting, and import issues |
+| `bun run typecheck` | Run TypeScript type checking |
+| `bun run test` | Run tests with Bun's test runner |
 | `bun run validate` | Run check, typecheck, test, and build |
 
 ## Validation Requirements
@@ -56,7 +56,7 @@
 Before completing any task, ensure all checks pass:
 
 ```bash
-bun check && bun typecheck && bun test && bun run build
+bun run check && bun run typecheck && bun run test && bun run build
 ```
 
 Run these commands in sequence. If any fail, fix the issues before proceeding.

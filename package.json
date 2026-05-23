@@ -13,7 +13,7 @@
     "check:fix": "biome check --write",
     "typecheck": "tsc --noEmit",
     "test": "bun test",
-    "validate": "bun check && bun typecheck && bun test && bun run build"
+    "validate": "bun run check && bun run typecheck && bun run test && bun run build"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.8",
