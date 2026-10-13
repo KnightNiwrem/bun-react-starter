@@ -3,10 +3,10 @@
 ## Tech Stack
 
 - **Runtime/Bundler**: Bun (pinned to v1.3.14)
-- **Frontend**: React 19, TypeScript 5.9+
-- **Styling**: Tailwind CSS 4, tw-animate-css
+- **Frontend**: React 19.3.0, TypeScript 7.0.2
+- **Styling**: Tailwind CSS 4.3.3, tw-animate-css
 - **UI Components**: shadcn/ui (Radix UI primitives)
-- **Linting/Formatting**: Biome 2.3+
+- **Linting/Formatting**: Biome 2.5.15
 - **Testing**: Bun's built-in test runner
 
 ## Project Structure
@@ -19,6 +19,7 @@
 │   ├── index.css         # Global styles and Tailwind imports
 │   ├── frontend.tsx      # React app entry point
 │   ├── App.tsx           # Main React component
+│   ├── assets.d.ts       # Global CSS import declarations for TypeScript
 │   ├── components/ui/    # shadcn/ui components (button, card, input, etc.)
 │   ├── lib/utils.ts      # Utility functions (cn helper for classnames)
 │   └── *.test.ts(x)      # Tests colocated with the code they cover
@@ -27,6 +28,7 @@
 ├── styles/globals.css    # Additional global styles
 ├── build.ts              # Custom build script
 ├── biome.json            # Biome linting/formatting config
+├── bun-env.d.ts           # SVG and CSS module type declarations
 └── tsconfig.json         # TypeScript configuration
 ```
 
@@ -66,11 +68,16 @@ Run these commands in sequence. If any fail, fix the issues before proceeding.
 ### TypeScript
 - Strict mode is enabled with `noUncheckedIndexedAccess`
 - Use path alias `@/*` for imports from `src/` directory
+- Keep `paths` entries relative to `tsconfig.json`; TypeScript 7 removed `baseUrl`
+- Declare global CSS imports in `src/assets.d.ts`; SVG and CSS module declarations are in `bun-env.d.ts`
 - Prefer explicit types over `any`
 
 ### Formatting (Biome)
 - Indent with spaces
 - Use double quotes for strings
+- Keep the `$schema` version in `biome.json` aligned with the installed Biome CLI
+- Use `linter.rules.preset: "recommended"` instead of the deprecated `recommended` field
+- SVG assets must include a meaningful `<title>` for the accessibility check
 
 ### React Components
 - Use functional components with TypeScript

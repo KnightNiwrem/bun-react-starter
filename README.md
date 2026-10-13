@@ -9,11 +9,11 @@ be deployed on a static host.
 ## Stack
 
 - Bun `1.3.14`
-- React `19`
-- TypeScript `5.9`
-- Tailwind CSS `4`
+- React `19.3.0`
+- TypeScript `7.0.2`
+- Tailwind CSS `4.3.3`
 - shadcn/ui-style components with Radix primitives
-- Biome for linting and formatting
+- Biome `2.5.15` for linting and formatting
 - `bun:test` for tests
 
 ## Scripts
@@ -70,6 +70,7 @@ src/
   index.html      HTML entrypoint for Bun HTML bundling
   frontend.tsx    React entrypoint
   App.tsx         Main React component
+  assets.d.ts     Global CSS import declarations for TypeScript
   components/ui/  shadcn/ui-style components
   lib/utils.ts    Shared helpers
 scripts/
@@ -83,4 +84,8 @@ styles/
 - This template does not include backend API routes.
 - Keep `src/index.ts` as a thin local-serving wrapper.
 - Add application logic to React components and testable modules.
+- The `@/*` import alias uses relative `paths` entries in `tsconfig.json`.
+- Global CSS imports are declared in `src/assets.d.ts`; SVG and CSS module
+  declarations are in `bun-env.d.ts`.
+- Keep the Biome configuration schema aligned with the installed CLI version.
 - Run `bun run validate` before committing template changes.
