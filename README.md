@@ -8,28 +8,28 @@ be deployed on a static host.
 
 ## Stack
 
-- Bun `1.3.14`
-- React `19.3.0`
+- Bun `1.4.4`
+- React `19.3.1`
 - TypeScript `7.0.2`
 - Tailwind CSS `4.3.3`
 - shadcn/ui-style components with Radix primitives
-- Biome `2.5.15` for linting and formatting
+- Biome `2.6.2` for linting and formatting
 - `bun:test` for tests
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `bun install` | Install dependencies |
-| `bun run dev` | Serve `src/index.html` through Bun with hot reloading |
-| `bun run serve:source` | Serve the source app locally without hot reloading |
-| `bun run build` | Build static production assets into `dist/` |
-| `bun run preview` | Build and serve `dist/` locally as static files |
-| `bun run check` | Run Biome linting, formatting, and import checks |
-| `bun run check:fix` | Auto-fix Biome issues |
-| `bun run typecheck` | Run TypeScript type checking |
-| `bun run test` | Run Bun tests |
-| `bun run validate` | Run check, typecheck, test, and build |
+| Command                | Description                                           |
+| ---------------------- | ----------------------------------------------------- |
+| `bun install`          | Install dependencies                                  |
+| `bun run dev`          | Serve `src/index.html` through Bun with hot reloading |
+| `bun run serve:source` | Serve the source app locally without hot reloading    |
+| `bun run build`        | Build static production assets into `dist/`           |
+| `bun run preview`      | Build and serve `dist/` locally as static files       |
+| `bun run check`        | Run Biome linting, formatting, and import checks      |
+| `bun run check:fix`    | Auto-fix Biome issues                                 |
+| `bun run typecheck`    | Run TypeScript type checking                          |
+| `bun run test`         | Run Bun tests                                         |
+| `bun run validate`     | Run check, typecheck, test, and build                 |
 
 ## Development
 
