@@ -2,11 +2,11 @@
 
 ## Tech Stack
 
-- **Runtime/Bundler**: Bun (pinned to v1.3.14)
-- **Frontend**: React 19.3.0, TypeScript 7.0.2
+- **Runtime/Bundler**: Bun (pinned to v1.4.4)
+- **Frontend**: React 19.3.1, TypeScript 7.0.2
 - **Styling**: Tailwind CSS 4.3.3, tw-animate-css
 - **UI Components**: shadcn/ui (Radix UI primitives)
-- **Linting/Formatting**: Biome 2.5.15
+- **Linting/Formatting**: Biome 2.6.2
 - **Testing**: Bun's built-in test runner
 
 ## Project Structure
@@ -40,18 +40,18 @@
 
 ## Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `bun install` | Install dependencies |
-| `bun run dev` | Start dev server with hot reloading |
+| Command                | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| `bun install`          | Install dependencies                               |
+| `bun run dev`          | Start dev server with hot reloading                |
 | `bun run serve:source` | Serve the source app locally without hot reloading |
-| `bun run build` | Build static production assets into `dist/` |
-| `bun run preview` | Build and serve `dist/` locally as static files |
-| `bun run check` | Run Biome linting, formatting, and import checks |
-| `bun run check:fix` | Auto-fix linting, formatting, and import issues |
-| `bun run typecheck` | Run TypeScript type checking |
-| `bun run test` | Run tests with Bun's test runner |
-| `bun run validate` | Run check, typecheck, test, and build |
+| `bun run build`        | Build static production assets into `dist/`        |
+| `bun run preview`      | Build and serve `dist/` locally as static files    |
+| `bun run check`        | Run Biome linting, formatting, and import checks   |
+| `bun run check:fix`    | Auto-fix linting, formatting, and import issues    |
+| `bun run typecheck`    | Run TypeScript type checking                       |
+| `bun run test`         | Run tests with Bun's test runner                   |
+| `bun run validate`     | Run check, typecheck, test, and build              |
 
 ## Validation Requirements
 
@@ -66,6 +66,7 @@ Run these commands in sequence. If any fail, fix the issues before proceeding.
 ## Code Style Guidelines
 
 ### TypeScript
+
 - Strict mode is enabled with `noUncheckedIndexedAccess`
 - Use path alias `@/*` for imports from `src/` directory
 - Keep `paths` entries relative to `tsconfig.json`; TypeScript 7 removed `baseUrl`
@@ -73,6 +74,7 @@ Run these commands in sequence. If any fail, fix the issues before proceeding.
 - Prefer explicit types over `any`
 
 ### Formatting (Biome)
+
 - Indent with spaces
 - Use double quotes for strings
 - Keep the `$schema` version in `biome.json` aligned with the installed Biome CLI
@@ -80,12 +82,14 @@ Run these commands in sequence. If any fail, fix the issues before proceeding.
 - SVG assets must include a meaningful `<title>` for the accessibility check
 
 ### React Components
+
 - Use functional components with TypeScript
 - shadcn/ui components are in `src/components/ui/`
 - Use the `cn()` helper from `@/lib/utils` for conditional classnames
 - Prefer composition with Radix UI Slot pattern for component variants
 
 ### Styling
+
 - Use Tailwind CSS utility classes
 - Custom animations available via tw-animate-css
 - Tailwind directives are enabled in CSS files
